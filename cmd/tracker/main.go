@@ -10,7 +10,7 @@ import (
 func main() {
 	weight := 84.6
 	height := 1.87
-	//added new comment
+
 	// дневная активность
 	input := []string{
 		"678,0h50m",
