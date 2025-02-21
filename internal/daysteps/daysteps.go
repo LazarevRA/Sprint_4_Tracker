@@ -6,13 +6,10 @@ import (
 	"strconv"
 	"strings"
 	"time"
-
-	"github.com/Yandex-Practicum/go1fl-4-sprint-final/internal/spentcalories"
 )
 
 var (
-	StepLength     = 0.65   // длина шага в метрах
-	convKilometers = 1000.0 // метров в километре
+	StepLength = 0.65 // длина шага в метрах
 )
 
 // parsePackage принимает строку с данными формата "количество шагов, продолжительность прогулки"
@@ -46,9 +43,6 @@ func parsePackage(data string) (int, time.Duration, error) {
 // Если пакет валидный, он добавляется в слайс storage, который возвращает
 // функция. Если пакет невалидный, storage возвращается без изменений.
 func DayActionInfo(data string, weight, height float64) string {
-
-	var convKilometers = 1000.0
-
 	steps, activityDuration, err := parsePackage(data)
 	if err != nil {
 		fmt.Println(err)
@@ -58,7 +52,7 @@ func DayActionInfo(data string, weight, height float64) string {
 		return ""
 	}
 
-	distance := StepLength * float64(steps) / convKilometers
+	distance := StepLength * float64(steps) / MInKm
 	calories := spentcalories.WalkingSpentCalories(steps, weight, height, activityDuration)
 
 	return fmt.Sprintf("Количество шагов: %d.\nДистанция составила %.2f км.\nВы сожгли %.2f ккал.\n", steps, distance, calories)

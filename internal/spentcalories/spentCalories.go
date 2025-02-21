@@ -11,7 +11,7 @@ import (
 // Основные константы, необходимые для расчетов.
 const (
 	lenStep   = 0.65   // средняя длина шага.
-	mInKm     = 1000.0 // количество метров в километре.
+	MInKm     = 1000.0 // количество метров в километре.
 	minInH    = 60     // количество минут в часе.
 	kmhInMsec = 0.278  // коэффициент для преобразования км/ч в м/с.
 	cmInM     = 100    // количество сантиметров в метре.
@@ -49,7 +49,7 @@ func parseTraining(data string) (int, string, time.Duration, error) {
 //
 // steps int — количество совершенных действий (число шагов при ходьбе и беге).
 func distance(steps int) float64 {
-	return float64(steps) * lenStep / mInKm
+	return float64(steps) * lenStep / MInKm
 
 }
 
